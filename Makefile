@@ -19,6 +19,9 @@ pdf: ## Compile pdf
 epub: ## Compile epub
 	$(call review,"review-preproc -r --tabwidth=2 *.re && review-epubmaker config.yml")
 
+vol: ## Create vol
+	$(call review,"review-vol")
+
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help
 	@grep --no-filename -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-40s\033[0m %s\n", $$1, $$2}'

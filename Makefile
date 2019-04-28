@@ -4,9 +4,17 @@ SHELL=/bin/bash
 # https://gist.github.com/tadashi-aikawa/da73d277a3c1ec6767ed48d1335900f3
 .PHONY: $(shell grep --no-filename -E '^[a-zA-Z0-9_-]+:' $(MAKEFILE_LIST) | sed 's/://')
 
+# Macro definitions
+define review
+	docker run -it --rm -v $(PWD):/book -w /book/articles vvakame/review:3.1 /bin/bash -ci ${1}
+endef
+
 # Phony Targets
 diff: ## Word diff
 	git diff head --word-diff-regex=$$'[^\x80-\xbf][\x80-\xbf]*' --word-diff=color
+
+pdf: ## Compile pdf
+	$(call review,"review-preproc -r --tabwidth=2 *.re && review-pdfmaker config.yml")
 
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help

@@ -9,3 +9,15 @@ articles/*.html
 articles/*.md
 articles/*.xml
 articles/*.txt
+
+# macOS
+.DS_Store
+
+# IntelliJ
+.idea/
+
+# VS Code
+.vscode/
+
+# direnv
+.envrc

@@ -22,6 +22,10 @@ epub: ## Compile epub
 vol: ## Create vol
 	$(call review,"review-vol")
 
+toc: ## Create toc
+	command="review-index --level 3 -a | cut -c -3,26- | cut -f 1 -d '(' | grep -v notoc | sed 's/       / /g'" && \
+	$(call review,"$${command}")
+
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help
 	@grep --no-filename -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-40s\033[0m %s\n", $$1, $$2}'

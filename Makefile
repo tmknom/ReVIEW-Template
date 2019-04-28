@@ -16,6 +16,9 @@ diff: ## Word diff
 pdf: ## Compile pdf
 	$(call review,"review-preproc -r --tabwidth=2 *.re && review-pdfmaker config.yml")
 
+epub: ## Compile epub
+	$(call review,"review-preproc -r --tabwidth=2 *.re && review-epubmaker config.yml")
+
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help
 	@grep --no-filename -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-40s\033[0m %s\n", $$1, $$2}'

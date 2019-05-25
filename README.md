@@ -278,3 +278,25 @@ Re:VIEW 3で変わったことの詳細については、以下を参照して�
    * plistings.sty: MIT License
    * gentombow.sty: BSD License
    * jsbook.cls: BSD License
+
+---
+
+# 追記
+
+## アップストリームから最新情報を取り込む
+
+```
+$ git remote add upstream git://github.com/TechBooster/ReVIEW-Template.git
+
+$ git checkout master
+$ git fetch upstream master
+$ git merge upstream/master
+$ git tag vXXXXXXXX
+$ git push origin vXXXXXXXX
+$ git push origin master
+
+$ git checkout develop
+$ git checkout -b merge-upstream-vXXXXXXXX
+$ git merge master
+$ git push origin `git rev-parse --abbrev-ref HEAD`
+```
